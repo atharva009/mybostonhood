@@ -1,4 +1,4 @@
-package util.ADTTreeMap;
+package util.ADTBST;
 
 public enum SortField {
 	NAME,

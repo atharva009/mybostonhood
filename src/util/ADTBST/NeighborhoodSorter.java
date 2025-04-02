@@ -1,4 +1,4 @@
-package util.ADTTreeMap;
+package util.ADTBST;
 
 import java.util.ArrayList;
 import java.util.Comparator;
