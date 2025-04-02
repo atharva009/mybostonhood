@@ -7,9 +7,4 @@ public interface INeighborhood {
     double getSchoolRating();
     int getGreenSpaceScore();
     double getLivabilityScore();
-
-    void calculateLivabilityScore(double rentWeight,
-                                   double crimeWeight,
-                                   double schoolWeight,
-                                   double greenWeight);
 }

@@ -50,21 +50,6 @@ public class Neighborhood implements INeighborhood {
     }
 
     @Override
-    public void calculateLivabilityScore(double rentWeight,
-                                         double crimeWeight,
-                                         double schoolWeight,
-                                         double greenWeight) {
-        // Normalize rent and crime so that lower = better
-        double normalizedRent = 1 / (averageRent + 1);      // Avoid division by zero
-        double normalizedCrime = 1 / (crimeRate + 1);
-
-        livabilityScore = (normalizedRent * rentWeight) +
-                          (normalizedCrime * crimeWeight) +
-                          (schoolRating * schoolWeight) +
-                          (greenSpaceScore * greenWeight);
-    }
-
-    @Override
     public String toString() {
         return String.format(
             "%s | Rent: $%.2f | Crime: %.2f | School: %.1f | Green: %d | Score: %.2f",
