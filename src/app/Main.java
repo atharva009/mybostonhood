@@ -1,5 +1,11 @@
 package app;
 
-public class Main {
+import ui.LandingPage; 
 
+public class Main {
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new LandingPage(); 
+        });
+    }
 }
