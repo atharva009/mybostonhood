@@ -128,5 +128,23 @@ public class NeighborhoodDirectory implements NeighborhoodDirectoryInterface {
         
         return names;
     }
+    
+    // Returns all Neighborhood objects stored in the directory
+    public List<Neighborhood> getAllNeighborhoods() {
+        List<Neighborhood> neighborhoods = new ArrayList<>();
+
+        for (Street street : streets) {
+            if (street == null) continue;
+
+            Entry current = street.head;
+            while (current != null) {
+                neighborhoods.add(current.value);
+                current = current.next;
+            }
+        }
+
+        return neighborhoods;
+    }
+
 
 }

@@ -58,7 +58,7 @@ public class LandingPage extends JFrame {
         // Admin Login
         adminLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                new AuthPage().setVisible(true);
+                new AuthPage(neighborhoodDirectory).setVisible(true);
                 setVisible(false);
             }
         });
