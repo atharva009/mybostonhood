@@ -29,7 +29,7 @@ public class LandingPage extends JFrame {
         mainPanel.add(welcomeLabel, BorderLayout.CENTER);
 
         // Explore Button
-        JButton exploreButton = new JButton("Continue to Explore Neighborhood");
+        JButton exploreButton = new JButton("Explore Neighborhoods");
         exploreButton.setPreferredSize(new Dimension(280, 40));
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(exploreButton);
