@@ -5,10 +5,15 @@ import java.awt.*;
 import java.awt.event.*;
 
 import util.ADTStack.NavigationStack;
+import util.ADTHashMap.NeighborhoodDirectory;
 
 public class LandingPage extends JFrame {
 
-    public LandingPage() {
+    private NeighborhoodDirectory neighborhoodDirectory;
+
+    public LandingPage(NeighborhoodDirectory directory) {
+        this.neighborhoodDirectory = directory;
+
         setTitle("MyBostonHood - Welcome");
         setSize(500, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,25 +41,25 @@ public class LandingPage extends JFrame {
         JPanel adminPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         adminPanel.add(adminLabel);
 
-        // South Panel for both buttons and admin link
+        // South Panel for buttons and admin link
         JPanel southPanel = new JPanel(new BorderLayout());
         southPanel.add(buttonPanel, BorderLayout.CENTER);
         southPanel.add(adminPanel, BorderLayout.SOUTH);
         mainPanel.add(southPanel, BorderLayout.SOUTH);
 
-        // ----- Listeners -----
+        // ----- Action Listeners -----
 
         // Explore Neighborhoods
         exploreButton.addActionListener(e -> {
             this.setVisible(false);
-            new ExploreNeighborhoodPage(null); // Next UI to be built
+            new ExploreNeighborhoodPage(neighborhoodDirectory); // Pass directory to next page
         });
 
         // Admin Login
         adminLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 new AuthPage().setVisible(true);
-                setVisible(false); // Hide current frame but keep in stack
+                setVisible(false);
             }
         });
 
