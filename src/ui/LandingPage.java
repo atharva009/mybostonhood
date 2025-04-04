@@ -1,9 +1,10 @@
 package ui;
 
 import javax.swing.*;
-import util.ADTStack.NavigationStack;
 import java.awt.*;
 import java.awt.event.*;
+
+import util.ADTStack.NavigationStack;
 
 public class LandingPage extends JFrame {
 
@@ -12,60 +13,53 @@ public class LandingPage extends JFrame {
         setSize(500, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Center the window
-        NavigationStack.push(this);
+        NavigationStack.push(this); // Push this frame onto the stack
 
-        // Main panel with border layout
+        // ----- Main Panel -----
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        // Top: Welcome Label
+        // Welcome Label
         JLabel welcomeLabel = new JLabel("Welcome to My Boston Hood", JLabel.CENTER);
         welcomeLabel.setFont(new Font("SansSerif", Font.BOLD, 24));
         mainPanel.add(welcomeLabel, BorderLayout.CENTER);
 
-        // Center: Continue Button
+        // Explore Button
         JButton exploreButton = new JButton("Continue to Explore Neighborhood");
         exploreButton.setPreferredSize(new Dimension(280, 40));
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(exploreButton);
-        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-        // Bottom right: Admin link styled as a label
+        // Admin Label as clickable link
         JLabel adminLabel = new JLabel("<HTML><U>Are you an admin?</U></HTML>");
         adminLabel.setForeground(Color.BLUE.darker());
         adminLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         JPanel adminPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         adminPanel.add(adminLabel);
-        mainPanel.add(adminPanel, BorderLayout.SOUTH);
 
-        // Use layered panel to stack button and admin label in same region
+        // South Panel for both buttons and admin link
         JPanel southPanel = new JPanel(new BorderLayout());
         southPanel.add(buttonPanel, BorderLayout.CENTER);
         southPanel.add(adminPanel, BorderLayout.SOUTH);
         mainPanel.add(southPanel, BorderLayout.SOUTH);
 
-        // Add listeners
+        // ----- Listeners -----
+
+        // Explore Neighborhoods
         exploreButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Landing to explore (build next)");
-            // TODO: Launch Landing Cards Page
+            this.setVisible(false);
+            new ExploreNeighborhoodPage(null); // Next UI to be built
         });
 
+        // Admin Login
         adminLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 new AuthPage().setVisible(true);
-                setVisible(false); // hide current page but keep in stack
+                setVisible(false); // Hide current frame but keep in stack
             }
         });
 
+        // ----- Final Frame Setup -----
         add(mainPanel);
         setVisible(true);
-    }
-
-    /** 
-     * Main Method - Application Entry Point
-     */
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new LandingPage();
-        });
     }
 }
