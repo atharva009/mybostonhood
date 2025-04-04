@@ -62,5 +62,41 @@ public class Neighborhood implements INeighborhood {
             "%s | Rent: $%.2f | Crime: %.2f | School: %.1f | Green: %d | Score: %.2f",
             name, averageRent, crimeRate, schoolRating, greenSpaceScore, livabilityScore);
     }
+    
+    @Override
+    public void setName(String name) {
+    	this.name = name;
+    }
+    
+    @Override
+    public void setDescription(String description) {
+    	this.description = description;
+    }
+    
+    
+    @Override
+    public void setAverageRent(double averageRent) {
+        this.averageRent = averageRent;
+    }
+
+    @Override
+    public void setCrimeRate(double crimeRate) {
+        this.crimeRate = crimeRate;
+    }
+
+    @Override
+    public void setSchoolRating(double schoolRating) {
+        this.schoolRating = schoolRating;
+    }
+
+    @Override
+    public void setGreenSpaceScore(int greenSpaceScore) {
+        this.greenSpaceScore = greenSpaceScore;
+    }
+
+    @Override
+    public void setLivabilityScore(double livabilityScore) {
+        this.livabilityScore =livabilityScore;
+    }
 
 }
