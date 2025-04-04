@@ -3,26 +3,33 @@ package model;
 public class Neighborhood implements INeighborhood {
 
 	private String name;
+	private String description;
     private double averageRent;
     private double crimeRate;
     private double schoolRating;
     private int greenSpaceScore;
     private double livabilityScore;
 
-    public Neighborhood(String name, double averageRent, double crimeRate,
+    public Neighborhood(String name, String description, double averageRent, double crimeRate,
                         double schoolRating, int greenSpaceScore) {
         this.name = name;
+        this.description = description;
         this.averageRent = averageRent;
         this.crimeRate = crimeRate;
         this.schoolRating = schoolRating;
         this.greenSpaceScore = greenSpaceScore;
-        this.livabilityScore = 0.0; // initially uncalculated
+        this.livabilityScore = 0.0;
     }
 
     @Override
     public String getName() {
         return name;
     }
+    
+    @Override
+    public String getDescription() {
+		return description;
+	}
 
     @Override
     public double getAverageRent() {
