@@ -57,7 +57,7 @@ public class AdminDashboard extends JFrame {
     private void refreshNeighborhoodList() {
         cardsPanel.removeAll();
 
-        for (Neighborhood n : directory.getAllNeighborhoodNames()) {
+        for (Neighborhood n : directory.getAllNeighborhoods()) {
             JPanel card = createNeighborhoodCard(n);
             cardsPanel.add(card);
         }
