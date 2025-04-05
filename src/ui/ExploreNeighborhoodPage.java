@@ -48,7 +48,12 @@ public class ExploreNeighborhoodPage extends JFrame {
         sortDropdown = new JComboBox<>(SortField.values());
         centerSortPanel.add(sortDropdown);
         topPanel.add(centerSortPanel, BorderLayout.CENTER);
+        
+        JButton analyzeButton = new JButton("📊 Analyze Neighborhoods");
+        analyzeButton.addActionListener(e -> showNeighborhoodAnalytics());
+        topPanel.add(analyzeButton, BorderLayout.LINE_START);  // To the left
 
+        
         JButton viewCompareButton = new JButton("View My Comparisons");
         viewCompareButton.addActionListener(e -> showComparison());
         topPanel.add(viewCompareButton, BorderLayout.EAST);
@@ -67,7 +72,12 @@ public class ExploreNeighborhoodPage extends JFrame {
         setVisible(true);
     }
 
-    private void initializeSorters() {
+    private void showNeighborhoodAnalytics() {
+        new NeighborhoodAnalyticsPage(directory).showCharts(this);
+    }
+
+
+	private void initializeSorters() {
         List<String> allNames = directory.getAllNeighborhoodNames();
         for (SortField field : SortField.values()) {
             NeighborhoodSorter sorter = new NeighborhoodSorter(field.getComparator());
