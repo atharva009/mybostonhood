@@ -20,15 +20,29 @@ public class AdminDashboard extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        NavigationStack.back();
         NavigationStack.push(this);
 
         // ----- Main Container Panel -----
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        // ----- Top Panel -----
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        // ----- Top Panel (Back + Add Button) -----
+        JPanel topPanel = new JPanel(new BorderLayout());
+
+        // Styled Back Button (top left, similar to ExploreNeighborhoodPage)
+        JButton backButton = new JButton("← Back");
+        backButton.setPreferredSize(new Dimension(100, 30));
+        backButton.addActionListener(e -> {
+            NavigationStack.back(); // Go back to previous page (LandingPage in this case)
+        });
+        topPanel.add(backButton, BorderLayout.WEST);
+
+        // Add Button (top right)
+        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton addButton = new JButton("Add New Neighborhood");
-        topPanel.add(addButton);
+        rightPanel.add(addButton);
+        topPanel.add(rightPanel, BorderLayout.EAST);
+
         mainPanel.add(topPanel, BorderLayout.NORTH);
 
         // ----- Cards Panel (Scrollable) -----
@@ -37,17 +51,10 @@ public class AdminDashboard extends JFrame {
         scrollPane = new JScrollPane(cardsPanel);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
 
-        // ----- Back Button -----
-        JButton backButton = new JButton("<< Back");
-        backButton.addActionListener(e -> NavigationStack.back());
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        bottomPanel.add(backButton);
-        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-
-        // ----- Add Listeners -----
+        // ----- Add Button Listener -----
         addButton.addActionListener(e -> showAddDialog());
 
-        // ----- Load Existing Neighborhoods -----
+        // ----- Load Neighborhoods -----
         refreshNeighborhoodList();
 
         // ----- Final Setup -----
@@ -75,15 +82,12 @@ public class AdminDashboard extends JFrame {
         infoLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         card.add(infoLabel, BorderLayout.CENTER);
 
-        // Buttons panel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton editBtn = new JButton("Edit");
         JButton deleteBtn = new JButton("Delete");
 
-        // Edit action
         editBtn.addActionListener(e -> showEditDialog(n));
 
-        // Delete action
         deleteBtn.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(this,
                     "Are you sure you want to delete this neighborhood?",
@@ -118,19 +122,14 @@ public class AdminDashboard extends JFrame {
 
         panel.add(new JLabel("Neighborhood Name:"));
         panel.add(nameField);
-
         panel.add(new JLabel("Description:"));
         panel.add(scroll);
-
         panel.add(new JLabel("Average Rent ($):"));
         panel.add(rentField);
-
         panel.add(new JLabel("Crime Rate (0.0 - 10.0):"));
         panel.add(crimeField);
-
         panel.add(new JLabel("School Rating (0.0 - 10.0):"));
         panel.add(schoolField);
-
         panel.add(new JLabel("Green Space Score (0 - 100):"));
         panel.add(greenField);
 
@@ -149,13 +148,12 @@ public class AdminDashboard extends JFrame {
                     return;
                 }
 
-                // Add neighborhood to the directory (update your method to accept these new fields)
                 Neighborhood nh = new Neighborhood(name, desc, avgRent, crime, school, greenScore);
-                directory.addNeighborhood(nh.getName(),nh);
+                directory.addNeighborhood(nh.getName(), nh);
                 refreshNeighborhoodList();
 
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Please enter valid numeric values for rent, crime rate, school rating, and green space.");
+                JOptionPane.showMessageDialog(this, "Please enter valid numeric values.");
             }
         }
     }
@@ -177,19 +175,14 @@ public class AdminDashboard extends JFrame {
 
         panel.add(new JLabel("Neighborhood Name:"));
         panel.add(nameField);
-
         panel.add(new JLabel("Description:"));
         panel.add(scroll);
-
         panel.add(new JLabel("Average Rent ($):"));
         panel.add(rentField);
-
         panel.add(new JLabel("Crime Rate (0.0 - 10.0):"));
         panel.add(crimeField);
-
         panel.add(new JLabel("School Rating (0.0 - 10.0):"));
         panel.add(schoolField);
-
         panel.add(new JLabel("Green Space Score (0 - 100):"));
         panel.add(greenField);
 
@@ -208,7 +201,6 @@ public class AdminDashboard extends JFrame {
                     return;
                 }
 
-                // Update neighborhood fields
                 n.setName(newName);
                 n.setDescription(newDesc);
                 n.setAverageRent(newRent);
@@ -219,7 +211,7 @@ public class AdminDashboard extends JFrame {
                 refreshNeighborhoodList();
 
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Please enter valid numeric values for rent, crime rate, school rating, and green space.");
+                JOptionPane.showMessageDialog(this, "Please enter valid numeric values.");
             }
         }
     }
