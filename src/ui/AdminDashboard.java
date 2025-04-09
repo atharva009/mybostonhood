@@ -1,10 +1,14 @@
 package ui;
 
 import javax.swing.*;
+
+import model.Neighborhood;
+
 import java.awt.*;
 import java.awt.event.*;
+
+import util.UIHelper;
 import util.ADTHashMap.NeighborhoodDirectory;
-import model.Neighborhood;
 import util.ADTStack.NavigationStack;
 
 public class AdminDashboard extends JFrame {
@@ -58,6 +62,7 @@ public class AdminDashboard extends JFrame {
         refreshNeighborhoodList();
 
         // ----- Final Setup -----
+        UIHelper.maximize(this);
         add(mainPanel);
     }
 

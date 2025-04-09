@@ -1,4 +1,3 @@
-
 package ui;
 
 import javax.swing.*;
@@ -7,6 +6,7 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
+import util.UIHelper;
 import util.ADTBST.NeighborhoodSorter;
 import model.Neighborhood;
 import util.ADTHashMap.NeighborhoodDirectory;
@@ -39,21 +39,23 @@ public class ExploreNeighborhoodPage extends JFrame {
 
         JPanel topPanel = new JPanel(new BorderLayout());
 
+        JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton backButton = new JButton("← Back");
         backButton.addActionListener(e -> NavigationStack.back());
-        topPanel.add(backButton, BorderLayout.WEST);
+        leftPanel.add(backButton);
+
+        JButton analyzeButton = new JButton("📊 Analyze Neighborhoods");
+        analyzeButton.addActionListener(e -> showNeighborhoodAnalytics());
+        leftPanel.add(analyzeButton);
+
+        topPanel.add(leftPanel, BorderLayout.WEST);
 
         JPanel centerSortPanel = new JPanel();
         centerSortPanel.add(new JLabel("Sort by:"));
         sortDropdown = new JComboBox<>(SortField.values());
         centerSortPanel.add(sortDropdown);
         topPanel.add(centerSortPanel, BorderLayout.CENTER);
-        
-        JButton analyzeButton = new JButton("📊 Analyze Neighborhoods");
-        analyzeButton.addActionListener(e -> showNeighborhoodAnalytics());
-        topPanel.add(analyzeButton, BorderLayout.LINE_START);  // To the left
 
-        
         JButton viewCompareButton = new JButton("View My Comparisons");
         viewCompareButton.addActionListener(e -> showComparison());
         topPanel.add(viewCompareButton, BorderLayout.EAST);
@@ -69,6 +71,7 @@ public class ExploreNeighborhoodPage extends JFrame {
 
         initializeSorters();
         refreshNeighborhoods();
+        UIHelper.maximize(this);
         setVisible(true);
     }
 
@@ -76,8 +79,7 @@ public class ExploreNeighborhoodPage extends JFrame {
         new NeighborhoodAnalyticsPage(directory).showCharts(this);
     }
 
-
-	private void initializeSorters() {
+    private void initializeSorters() {
         List<String> allNames = directory.getAllNeighborhoodNames();
         for (SortField field : SortField.values()) {
             NeighborhoodSorter sorter = new NeighborhoodSorter(field.getComparator());

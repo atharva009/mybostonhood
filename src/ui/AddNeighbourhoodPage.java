@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import util.UIHelper;
+
 public class AddNeighbourhoodPage extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -37,6 +39,7 @@ public class AddNeighbourhoodPage extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		UIHelper.maximize(this);
 	}
 
 }

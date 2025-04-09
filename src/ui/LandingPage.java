@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import util.ADTStack.NavigationStack;
+import util.UIHelper;
 import util.ADTHashMap.NeighborhoodDirectory;
 
 public class LandingPage extends JFrame {
@@ -66,5 +67,6 @@ public class LandingPage extends JFrame {
         // ----- Final Frame Setup -----
         add(mainPanel);
         setVisible(true);
+        UIHelper.maximize(this);
     }
 }
