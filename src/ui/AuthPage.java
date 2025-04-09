@@ -14,7 +14,7 @@ public class AuthPage extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField txtUsername;
-    private JTextField txtPassword;
+    private JPasswordField txtPassword;
 
     // Dummy admin credentials
     private final String ADMIN_USERNAME = "admin";
@@ -47,7 +47,7 @@ public class AuthPage extends JFrame {
         lblPassword.setBounds(69, 144, 87, 21);
         contentPane.add(lblPassword);
 
-        txtPassword = new JTextField();
+        txtPassword = new JPasswordField();
         txtPassword.setBounds(184, 141, 130, 26);
         contentPane.add(txtPassword);
         txtPassword.setColumns(10);
@@ -60,7 +60,7 @@ public class AuthPage extends JFrame {
         JButton btnLogin = new JButton("Login");
         btnLogin.addActionListener(e -> {
             String username = txtUsername.getText();
-            String password = txtPassword.getText();
+            String password = new String(txtPassword.getPassword());
 
             if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
                 JOptionPane.showMessageDialog(this, "Login Successful!");
