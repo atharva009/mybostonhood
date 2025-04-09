@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import util.ADTStack.NavigationStack;
+import util.UIHelper;
 import util.ADTHashMap.NeighborhoodDirectory;
 
 import java.awt.Font;
@@ -80,5 +81,7 @@ public class AuthPage extends JFrame {
         });
         btnBack.setBounds(6, 10, 117, 29);
         contentPane.add(btnBack);
+        
+        UIHelper.maximize(this);
     }
 }
