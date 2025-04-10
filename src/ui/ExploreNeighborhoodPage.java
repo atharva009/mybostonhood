@@ -73,6 +73,16 @@ public class ExploreNeighborhoodPage extends JFrame {
         refreshNeighborhoods();
         UIHelper.maximize(this);
         setVisible(true);
+        // New code
+        if (directory.getAllNeighborhoodNames().isEmpty()) {
+            JOptionPane.showMessageDialog(
+                this,
+                "No neighborhoods available. Wait for Admin to add some neighborhoods to get started.",
+                "No Data Found",
+                JOptionPane.WARNING_MESSAGE
+            );
+        }
+        
     }
 
     private void showNeighborhoodAnalytics() {

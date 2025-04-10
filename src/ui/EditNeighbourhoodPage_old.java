@@ -8,7 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import util.UIHelper;
 
-public class EditNeighbourhoodPage extends JFrame {
+public class EditNeighbourhoodPage_old extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -20,7 +20,7 @@ public class EditNeighbourhoodPage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditNeighbourhoodPage frame = new EditNeighbourhoodPage();
+					EditNeighbourhoodPage_old frame = new EditNeighbourhoodPage_old();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class EditNeighbourhoodPage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditNeighbourhoodPage() {
+	public EditNeighbourhoodPage_old() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

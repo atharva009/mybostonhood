@@ -111,7 +111,12 @@ public class AdminDashboard extends JFrame {
     }
 
     private void showAddDialog() {
-        JTextField nameField = new JTextField(20);
+    	SwingUtilities.invokeLater(() -> {
+            AddNeighborhoodPage addPage = new AddNeighborhoodPage(directory);
+            addPage.setVisible(true);
+        });
+    	
+        /*JTextField nameField = new JTextField(20);
         JTextArea descArea = new JTextArea(3, 20);
         JScrollPane scroll = new JScrollPane(descArea);
         descArea.setLineWrap(true);
@@ -160,11 +165,16 @@ public class AdminDashboard extends JFrame {
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Please enter valid numeric values.");
             }
-        }
+        }*/
     }
 
     private void showEditDialog(Neighborhood n) {
-        JTextField nameField = new JTextField(n.getName(), 20);
+    	SwingUtilities.invokeLater(() -> {
+            EditNeighborhoodPage editPage = new EditNeighborhoodPage(directory, n);
+            editPage.setVisible(true);
+        });
+    	
+        /*JTextField nameField = new JTextField(n.getName(), 20);
         JTextArea descArea = new JTextArea(n.getDescription(), 3, 20);
         JScrollPane scroll = new JScrollPane(descArea);
         descArea.setLineWrap(true);
@@ -218,6 +228,6 @@ public class AdminDashboard extends JFrame {
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Please enter valid numeric values.");
             }
-        }
+        }*/
     }
 }
