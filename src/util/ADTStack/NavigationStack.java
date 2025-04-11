@@ -26,4 +26,16 @@ public class NavigationStack {
     public static void clear() {
         navStack.clear();
     }
+    
+    public static JFrame peek() {
+    	return navStack.peek();
+    }
+    
+    public static boolean isEmpty() {
+    	return navStack.isEmpty();
+    }
+    
+    public static int size() {
+    	return navStack.size();
+    }
 }

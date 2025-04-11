@@ -55,6 +55,10 @@ public class ArrayStack<T> implements StackInterface<T> {
             topIndex--;
         }
     }
+    
+    public int size() {
+    	return topIndex;
+    }
 
     private void doubleCapacity() {
         @SuppressWarnings("unchecked")
