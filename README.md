@@ -86,10 +86,23 @@ The app uses a custom `NavigationStack` to simulate browser-like behavior:
 `1. Clone the Repository`
 - git clone git@github.com:atharva009/mybostonhood.git
 
-`2. Compile the code`
+`2. Add Jar files`
+- Add to Build Path
+    - Right-click on your project in the Project Explorer.
+    - Go to Build Path > Configure Build Path.
+    - Go to the Libraries tab.
+    - Click Add JARs (from lib folder).
+- Select both:
+    - lib/jfreechart-1.0.19.jar
+    - lib/jcommon-1.0.23.jar
+- Click Apply and Close.
+- Refresh Project
+  - Right-click your project and choose Refresh to ensure the changes take effect.
+
+`3. Compile the code`
 - javac -d out -cp "lib/*" $(find src -name "*.java")
 
-`3. Run the code`
+`4. Run the code`
 -  java -cp out app.Main
 
 
